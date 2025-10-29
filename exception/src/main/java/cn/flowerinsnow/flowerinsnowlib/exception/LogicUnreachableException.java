@@ -28,18 +28,31 @@ import java.util.Objects;
 /// @author 冬花ice
 /// @since 1.2.0
 public class LogicUnreachableException extends RuntimeException {
+    /// Constructs a new runtime exception with `null` as its detail message.  The cause is not initialized, and may subsequently be initialized by a call to [#initCause(Throwable)].
     public LogicUnreachableException() {
         super();
     }
 
+    /// Constructs a new runtime exception with the specified detail message. The cause is not initialized, and may subsequently be initialized by a call to [#initCause(Throwable)].
+    ///
+    /// @param message the detail message. The detail message is saved for later retrieval by the [#getMessage()] method.
     public LogicUnreachableException(String message) {
         super(message);
     }
 
+    /// Constructs a new runtime exception with the specified detail message and cause.
+    ///
+    /// Note that the detail message associated with `cause` is *not* automatically incorporated in this runtime exception's detail message.
+    ///
+    /// @param message the detail message (which is saved for later retrieval by the [#getMessage()] method).
+    /// @param cause the cause (which is saved for later retrieval by the [#getCause()] method).  (A `null` value is permitted, and indicates that the cause is nonexistent or unknown.)
     public LogicUnreachableException(String message, Throwable cause) {
         super(message, cause);
     }
 
+    /// Constructs a new runtime exception with the specified cause and a detail message of `(cause==null ? null : cause.toString())` (which typically contains the class and detail message of `cause`).  This constructor is useful for runtime exceptions that are little more than wrappers for other throwables.
+    ///
+    /// @param cause cause the cause (which is saved for later retrieval by the [#getCause()] method).  (A `null` value is permitted, and indicates that the cause is nonexistent or unknown.)
     public LogicUnreachableException(Throwable cause) {
         super(cause);
     }
