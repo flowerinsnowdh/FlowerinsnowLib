@@ -3,6 +3,7 @@ package cn.flowerinsnow.flowerinsnowlib.array;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Range;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -679,5 +680,266 @@ public final class ArrayUtil {
             @Flow(sourceIsContainer = true, target = Flow.RETURN_METHOD_TARGET, targetIsContainer = true) float[] array
     ) {
         return Arrays.stream(box(array));
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// boolean[] array = {false, true, true};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final boolean @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// byte[] array = {(byte) 0, (byte) 1, (byte) 2};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final byte @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// short[] array = {(short) 0, (short) 1, (short) 2};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final short @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// int[] array = {0, 1, 2};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final int @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// long[] array = {0L, 1L, 2L};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final long @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// char[] array = {'0', '1', '2'};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final char @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// float[] array = {0.0F, 1.0F, 2.0F};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final float @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// double[] array = {0.0, 1.0, 2.0};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static boolean isLastIndex(final double @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
+    }
+
+    /// 返回 `index` 是否是数组 `array` 的最后一个下标
+    ///
+    /// 例如：
+    /// ```java
+    /// String[] array = {"0", "1", "2"};
+    /// ArrayUtil.isLastIndex(array, 1); // false
+    /// ArrayUtil.isLastIndex(array, 2); // true
+    /// ArrayUtil.isLastIndex(array, 3); // false
+    /// ```
+    ///
+    /// @param array 需要判断的数组
+    /// @param index 需要判断的下标
+    /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
+    /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
+    /// @throws NullPointerException 当非空参数传入 `null` 时抛出
+    /// @since 1.0.1
+    @Contract(pure = true)
+    public static <T> boolean isLastIndex(final T @NotNull [] array, @Range(from = 0L, to = Integer.MAX_VALUE) final int index) {
+        Objects.requireNonNull(array, "array");
+        if (array.length == 0) {
+            return false;
+        }
+        //noinspection ConstantValue
+        if (index < 0) {
+            throw new IllegalArgumentException("The param \"index\" must be a non-negative integer");
+        }
+        return index == array.length - 1;
     }
 }
