@@ -926,6 +926,7 @@ public final class ArrayUtil {
     ///
     /// @param array 需要判断的数组
     /// @param index 需要判断的下标
+    /// @param <T> 该数组的类型
     /// @return 如果 `index` 是数组 `array` 的最后一个下标，返回 true
     /// @throws IllegalArgumentException 当参数 `index` 为负数时抛出
     /// @throws NullPointerException 当非空参数传入 `null` 时抛出
