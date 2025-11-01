@@ -5,6 +5,8 @@ import cn.flowerinsnow.flowerinsnowlib.exception.LogicUnreachableException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
+import java.util.StringJoiner;
+
 /// 可变长度整数，类似 protobuf 的 Varint
 /// 每个字节最高位为 1 表示“还有后续”，剩余 7 位为数据
 /// 理论上无最大值，但为了效率，最大值设为 `0xFFFFFFF`
@@ -115,5 +117,27 @@ public final class VarUInt28 extends Number {
     @Override
     public double doubleValue() {
         return this.value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        VarUInt28 that = (VarUInt28) o;
+        return this.value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + value;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", VarUInt28.class.getSimpleName() + "{", "}")
+                .add("value=" + value)
+                .toString();
     }
 }
