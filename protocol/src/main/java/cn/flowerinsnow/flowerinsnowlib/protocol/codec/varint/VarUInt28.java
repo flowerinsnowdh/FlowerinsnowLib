@@ -5,6 +5,7 @@ import cn.flowerinsnow.flowerinsnowlib.exception.LogicUnreachableException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
+import java.util.Objects;
 import java.util.StringJoiner;
 
 /// 可变长度整数，类似 protobuf 的 Varint
@@ -49,11 +50,39 @@ public final class VarUInt28 extends Number {
     /// @return 解析出的 [VarUInt28]
     /// @throws IllegalArgumentException 当数据不合法时抛出
     public static @NotNull VarUInt28 parse(byte @NotNull [] data) throws IllegalArgumentException {
+        Objects.requireNonNull(data, "data");
         if (data.length == 0) {
             throw new IllegalArgumentException("Empty data");
         }
         if (data.length > 4) {
             throw new IllegalArgumentException("Data too large. (" + data.length + "b > 4b)");
+        }
+        int value = 0;
+        for (int i = 0; i < data.length; i++) {
+            if (ArrayUtil.isLastIndex(data, i) && VarUIntUtil.hasRemaining(data[i]) || !ArrayUtil.isLastIndex(data, i) && !VarUIntUtil.hasRemaining(data[i])) {
+                throw new IllegalArgumentException("Illegal data of VarUInt");
+            }
+            value = (value << 7) | (data[i] & 0x7F);
+        }
+        return create(value);
+    }
+
+    /// 从数据解析 [VarUInt28]，指定 offset 和 len
+    ///
+    /// @param data 数据
+    /// @param offset 数据数组的起始 offset
+    /// @param len 要使用的字节数量，从 `offset` 开始
+    /// @return 解析出的 [VarUInt28]
+    /// @throws IllegalArgumentException 当数据不合法时抛出
+    public static @NotNull VarUInt28 parse(byte @NotNull [] data, int offset, int len) throws IllegalArgumentException {
+        if (data.length == 0) {
+            throw new IllegalArgumentException("Empty data");
+        }
+        if (data.length > 4) {
+            throw new IllegalArgumentException("Data too large. (" + data.length + "b > 4b)");
+        }
+        if (data.length - offset < len) {
+            throw new IllegalArgumentException("Input buffer too short");
         }
         int value = 0;
         for (int i = 0; i < data.length; i++) {
