@@ -11,7 +11,7 @@ import tools.jackson.core.util.DefaultPrettyPrinter;
 /// 示例使用 4 个空格缩进：
 /// ```java
 /// JsonMapper.shared().writer()
-///         .with(new CustomIndentDefaultPrettyPrinterImpl().createSpaces(4))
+///         .with(CustomIndentDefaultPrettyPrinterImpl.instance().createSpaces(4))
 ///         .writeValueAsString(node);
 /// ```
 ///

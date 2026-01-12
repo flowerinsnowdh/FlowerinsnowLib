@@ -1,4 +1,4 @@
-package cn.flowerinsnow.flowerinsnowlib.jackson.databind.java8.prettyprinter;
+package cn.flowerinsnow.flowerinsnowlib.jackson.databind.java11.prettyprinter;
 
 import cn.flowerinsnow.flowerinsnowlib.jackson.databind.prettyprinter.CustomIndentDefaultPrettyPrinter;
 import org.jetbrains.annotations.NotNull;
@@ -7,6 +7,18 @@ import org.jetbrains.annotations.Range;
 /// [CustomIndentDefaultPrettyPrinter] 的 Java 11 实现
 /// @see CustomIndentDefaultPrettyPrinter
 public class CustomIndentDefaultPrettyPrinterImpl extends CustomIndentDefaultPrettyPrinter {
+    private static final CustomIndentDefaultPrettyPrinterImpl INSTANCE = new CustomIndentDefaultPrettyPrinterImpl();
+
+    /// 创建该工具类实例
+    protected CustomIndentDefaultPrettyPrinterImpl() {
+    }
+
+    /// 获取该工具类
+    ///
+    /// @return 该工具类
+    public static @NotNull CustomIndentDefaultPrettyPrinterImpl instance() {
+        return INSTANCE;
+    }
     /// 指定数量的空格
     ///
     /// @param count 数量
