@@ -1,2 +1,2 @@
 group = "cn.flowerinsnow.flowerinsnowlib"
-version = "1.3.3"
+version = "1.4.0"
