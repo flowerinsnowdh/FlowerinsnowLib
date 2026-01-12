@@ -17,6 +17,10 @@ import tools.jackson.core.util.DefaultPrettyPrinter;
 ///
 /// @see DefaultPrettyPrinter
 public abstract class CustomIndentDefaultPrettyPrinter {
+    /// 不允许除子类外的类创建实例
+    protected CustomIndentDefaultPrettyPrinter() {
+    }
+
     /// 创建 [DefaultPrettyPrinter]，指定自定义对象 [tools.jackson.core.util.DefaultPrettyPrinter.Indenter]
     ///
     /// @param indenter 自定义对象缩进器

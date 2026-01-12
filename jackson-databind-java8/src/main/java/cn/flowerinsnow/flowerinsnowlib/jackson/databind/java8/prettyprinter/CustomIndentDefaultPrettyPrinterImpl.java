@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Range;
 public class CustomIndentDefaultPrettyPrinterImpl extends CustomIndentDefaultPrettyPrinter {
     private static final CustomIndentDefaultPrettyPrinterImpl INSTANCE = new CustomIndentDefaultPrettyPrinterImpl();
 
-    /// 创建该工具类实例
+    /// 不允许除子类外的类创建实例
     protected CustomIndentDefaultPrettyPrinterImpl() {
     }
 
