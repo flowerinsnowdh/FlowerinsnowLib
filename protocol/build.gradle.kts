@@ -53,3 +53,16 @@ publishing {
         }
     }
 }
+
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+    options.release = 8
+}
+
+tasks.named<JavaCompile>("compileTestJava") {
+    options.release = java.toolchain.languageVersion.get().asInt()
+}
+
+tasks.withType<Javadoc>().configureEach {
+    options.encoding = "UTF-8"
+}
