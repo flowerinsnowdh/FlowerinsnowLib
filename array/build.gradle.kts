@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:${project.property("deps.jetbrains.annotations.version")}")
+    compileOnly(libs.jetbrains.annotations)
 }
 
 java {

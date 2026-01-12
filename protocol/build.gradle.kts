@@ -17,11 +17,11 @@ repositories {
 dependencies {
     api(project(":array"))
     api(project(":exception"))
-    compileOnly("org.jetbrains:annotations:${project.property("deps.jetbrains.annotations.version")}")
+    compileOnly(libs.jetbrains.annotations)
 
-    testImplementation(platform("org.junit:junit-bom:6.0.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(platform(libs.junit-bom))
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 tasks.test {
