@@ -19,15 +19,11 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(8)
     }
 
     withSourcesJar()
     withJavadocJar()
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    options.release = 8
 }
 
 publishing {
@@ -45,4 +41,12 @@ publishing {
             }
         }
     }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType<Javadoc>().configureEach {
+    options.encoding = "UTF-8"
 }
