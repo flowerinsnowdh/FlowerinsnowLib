@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:${project.property("deps.jetbrains.annotations.version")}")
+    compileOnly(libs.jetbrains.annotations)
 }
 
 java {
@@ -38,7 +38,7 @@ publishing {
     }
 
     repositories {
-        maven("${property("maven_publish.github_packages")}") {
+        maven("${project.property("maven_publish.github_packages")}") {
             credentials {
                 username = "x-access-token"
                 password = System.getenv("GITHUB_TOKEN")
