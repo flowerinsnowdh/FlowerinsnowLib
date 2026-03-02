@@ -14,19 +14,29 @@ repositories {
 }
 
 dependencies {
-    api(project(":string"))
-    api(project(":jackson-databind-core"))
-
     compileOnly(libs.jetbrains.annotations)
+
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
 }
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(25)
     }
+}
 
-    withSourcesJar()
-    withJavadocJar()
+tasks.withType<JavaCompile>().configureEach {
+    options.release = 8
+}
+
+tasks.named<JavaCompile>("compileTestJava") {
+    options.release = java.toolchain.languageVersion.get().asInt()
 }
 
 publishing {
@@ -44,13 +54,4 @@ publishing {
             }
         }
     }
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
-    options.release = 11
-}
-
-tasks.withType<Javadoc>().configureEach {
-    options.encoding = "UTF-8"
 }

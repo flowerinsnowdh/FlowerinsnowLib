@@ -27,6 +27,6 @@ public class CustomIndentDefaultPrettyPrinterImpl extends CustomIndentDefaultPre
     /// @return 指定数量的空格
     @Override
     protected @NotNull String spaces(@Range(from = 0L, to = Integer.MAX_VALUE) final int count) {
-        return StringUtils.repeat(' ', count);
+        return StringUtil.repeat(' ', count);
     }
 }

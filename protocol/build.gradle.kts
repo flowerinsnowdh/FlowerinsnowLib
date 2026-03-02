@@ -1,3 +1,5 @@
+import java.nio.charset.Charset
+
 plugins {
     id("java")
     id("java-library")
@@ -55,7 +57,7 @@ publishing {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
+    options.encoding = Charset.defaultCharset().name()
     options.release = 8
 }
 
@@ -64,5 +66,5 @@ tasks.named<JavaCompile>("compileTestJava") {
 }
 
 tasks.withType<Javadoc>().configureEach {
-    options.encoding = "UTF-8"
+    options.encoding = Charset.defaultCharset().name()
 }
