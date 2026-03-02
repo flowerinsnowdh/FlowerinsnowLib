@@ -1,3 +1,5 @@
+import java.nio.charset.Charset
+
 plugins {
     id("java-library")
     id("maven-publish")
@@ -14,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    api(project(":string"))
     api(project(":jackson-databind-core"))
 
     compileOnly(libs.jetbrains.annotations)
@@ -46,10 +49,10 @@ publishing {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    options.encoding = "UTF-8"
+    options.encoding = Charset.defaultCharset().name()
     options.release = 8
 }
 
 tasks.withType<Javadoc>().configureEach {
-    options.encoding = "UTF-8"
+    options.encoding = Charset.defaultCharset().name()
 }

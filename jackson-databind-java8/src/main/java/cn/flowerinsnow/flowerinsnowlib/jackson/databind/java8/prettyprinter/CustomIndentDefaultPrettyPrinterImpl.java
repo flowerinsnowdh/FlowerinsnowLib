@@ -1,7 +1,7 @@
 package cn.flowerinsnow.flowerinsnowlib.jackson.databind.java8.prettyprinter;
 
 import cn.flowerinsnow.flowerinsnowlib.jackson.databind.prettyprinter.CustomIndentDefaultPrettyPrinter;
-import org.apache.commons.lang3.StringUtils;
+import cn.flowerinsnow.flowerinsnowlib.string.StringUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Range;
 
