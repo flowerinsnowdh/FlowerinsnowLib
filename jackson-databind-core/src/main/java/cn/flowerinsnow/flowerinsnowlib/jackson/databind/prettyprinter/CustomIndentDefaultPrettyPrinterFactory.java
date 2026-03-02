@@ -16,9 +16,9 @@ import tools.jackson.core.util.DefaultPrettyPrinter;
 /// ```
 ///
 /// @see DefaultPrettyPrinter
-public abstract class CustomIndentDefaultPrettyPrinter {
+public abstract class CustomIndentDefaultPrettyPrinterFactory {
     /// 不允许除子类外的类创建实例
-    protected CustomIndentDefaultPrettyPrinter() {
+    protected CustomIndentDefaultPrettyPrinterFactory() {
     }
 
     /// 创建 [DefaultPrettyPrinter]，指定自定义对象 [tools.jackson.core.util.DefaultPrettyPrinter.Indenter]
@@ -41,7 +41,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     /// @param indent Indentation String to prepend for a single level of indentation
     /// @param eol End-of-line marker to use after indented line
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(DefaultPrettyPrinter.Indenter)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(DefaultPrettyPrinter.Indenter)
     /// @see DefaultIndenter#DefaultIndenter(String, String)
     @Contract(value = "_, _ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter create(@NotNull final String indent, final String eol) {
@@ -54,7 +54,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param indent Indentation String to prepend for a single level of indentation
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(DefaultPrettyPrinter.Indenter)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(DefaultPrettyPrinter.Indenter)
     /// @see DefaultIndenter#DefaultIndenter(String, String)
     /// @see DefaultIndenter#SYS_LF
     @Contract(value = "_ -> new", pure = true)
@@ -68,7 +68,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param indent Indentation String to prepend for a single level of indentation
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(DefaultPrettyPrinter.Indenter)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(DefaultPrettyPrinter.Indenter)
     /// @see DefaultIndenter#DefaultIndenter(String, String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createLF(@NotNull final String indent) {
@@ -81,7 +81,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param indent Indentation String to prepend for a single level of indentation
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(DefaultPrettyPrinter.Indenter)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(DefaultPrettyPrinter.Indenter)
     /// @see DefaultIndenter#DefaultIndenter(String, String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createCRLF(@NotNull final String indent) {
@@ -95,7 +95,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     /// @param count 对象缩进空格字符数量
     /// @param eol 行分隔符
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(String, String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(String, String)
     @Contract(value = "_, _ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createSpaces(@Range(from = 0L, to = Integer.MAX_VALUE) final int count, @NotNull final String eol) {
         return create(this.spaces(count), eol);
@@ -107,7 +107,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param count 对象缩进空格字符数量
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createSpaces(@Range(from = 0L, to = Integer.MAX_VALUE) final int count) {
         return create(this.spaces(count));
@@ -119,7 +119,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param count 对象缩进空格字符数量
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#createLF(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#createLF(String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createSpacesLF(@Range(from = 0L, to = Integer.MAX_VALUE) final int count) {
         return createLF(this.spaces(count));
@@ -131,7 +131,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param count 对象缩进空格字符数量
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#createCRLF(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#createCRLF(String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createSpacesCRLF(@Range(from = 0L, to = Integer.MAX_VALUE) final int count) {
         return createCRLF(this.spaces(count));
@@ -143,7 +143,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     ///
     /// @param eol 行分隔符
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(String, String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(String, String)
     @Contract(value = "_ -> new", pure = true)
     public @NotNull DefaultPrettyPrinter createTab(@NotNull final String eol) {
         return create("\t", eol);
@@ -154,7 +154,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     /// 会通过 `indent` 和 `eol` 自动构造一个 [DefaultIndenter]
     ///
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#create(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#create(String)
     @Contract(value = "-> new", pure = true)
     public @NotNull DefaultPrettyPrinter createTab() {
         return create("\t");
@@ -165,7 +165,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     /// 会通过 `indent` 和 `eol` 自动构造一个 [DefaultIndenter]
     ///
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#createLF(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#createLF(String)
     @Contract(value = "-> new", pure = true)
     public @NotNull DefaultPrettyPrinter createTabLF() {
         return createLF("\t");
@@ -176,7 +176,7 @@ public abstract class CustomIndentDefaultPrettyPrinter {
     /// 会通过 `indent` 和 `eol` 自动构造一个 [DefaultIndenter]
     ///
     /// @return 创建出的 [DefaultPrettyPrinter]
-    /// @see CustomIndentDefaultPrettyPrinter#createCRLF(String)
+    /// @see CustomIndentDefaultPrettyPrinterFactory#createCRLF(String)
     @Contract(value = "-> new", pure = true)
     public @NotNull DefaultPrettyPrinter createTabCRLF() {
         return createCRLF("\t");
