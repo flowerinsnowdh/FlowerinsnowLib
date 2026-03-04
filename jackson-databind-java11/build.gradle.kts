@@ -14,7 +14,6 @@ repositories {
 }
 
 dependencies {
-    api(project(":string"))
     api(project(":jackson-databind-core"))
 
     compileOnly(libs.jetbrains.annotations)

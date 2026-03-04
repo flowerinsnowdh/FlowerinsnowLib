@@ -1,5 +1,5 @@
 plugins {
-    id("java-library")
+    id("java")
     id("maven-publish")
 }
 
@@ -27,7 +27,7 @@ tasks.named<Test>("test") {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 
     withSourcesJar()
